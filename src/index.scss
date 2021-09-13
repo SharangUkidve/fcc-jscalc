@@ -1,0 +1,151 @@
+@font-face {
+  font-family: 'DSDIGI';
+  src: url('./fonts/DSDIGI.eot');
+  src: local('DSDIGI'), url('./fonts/DSDIGI.woff') format('woff'), url('./fonts/DSDIGI.ttf') format('truetype');
+}
+
+%flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%i-flex {
+  @extend %flex;
+  display: inline-flex;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Orbitron, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+  font-size: 16px;
+  @extend %flex;
+  background-color: #f5f5f5;
+}
+
+* {
+  font-family: inherit;
+  box-sizing: inherit;
+}
+
+button {
+  font-size: inherit;
+}
+
+.calc {
+  border: 3px solid;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 320px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+  box-sizing: content-box;
+
+  &-mode {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 1rem;
+
+    &-label {
+      @extend %i-flex;
+    }
+  }
+
+  &-display {
+    font-family: DSDIGI, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+      'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2.5rem;
+    background-color: #cacacf;
+    min-height: 113px;
+    padding: 1rem;
+    text-align: right;
+    overflow-x: auto;
+    box-sizing: border-box;
+  }
+
+  &-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &-button {
+    @extend %i-flex;
+    box-sizing: border-box;
+    background-color: #38383a;
+    color: #fffffff7;
+    border: 1px solid #2c2c2e;
+    cursor: pointer;
+    padding: 0;
+    min-height: 80px;
+    font-size: 1.5rem;
+    outline: none;
+    transition: all 200ms;
+
+    &:hover,
+    &:focus {
+      background-color: #38383aee;
+    }
+
+    &:active {
+      background-color: #31313a;
+    }
+
+    &.delete {
+      background-color: #c71553;
+
+      &:focus,
+      &:hover {
+        background-color: #c71553df;
+      }
+
+      &:active {
+        background-color: #b01048;
+      }
+    }
+
+    &.clear {
+      grid-column-start: 1;
+      grid-column-end: 3;
+
+    }
+
+    &.equals {
+      grid-row-start: 4;
+      grid-row-end: 6;
+      grid-column-start: 4;
+      background-color: #178935;
+
+      &:hover,
+      &:focus {
+        background-color: #178935ee;
+      }
+
+      &:active {
+        background-color: #13812f;
+      }
+    }
+
+    &.operator {
+      background-color: #43434a;
+
+      &:hover,
+      &:focus {
+        background-color: #45454f;
+      }
+
+      &:active {
+        background-color: #38383a;
+      }
+    }
+  }
+}
